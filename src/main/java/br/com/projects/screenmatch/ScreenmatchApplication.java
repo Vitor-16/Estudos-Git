@@ -1,8 +1,6 @@
 package br.com.projects.screenmatch;
 
-import br.com.projects.screenmatch.model.DadosSerie;
-import br.com.projects.screenmatch.service.ConsumoApi;
-import br.com.projects.screenmatch.service.ConverteDados;
+import br.com.projects.screenmatch.main.Main;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,14 +14,7 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&apikey=7954343a");
-
-		System.out.println(json);
-
-		var conversor = new ConverteDados();
-		var dados = conversor.obterDados(json, DadosSerie.class);
-
-		System.out.println(dados);
+		Main principal = new Main();
+		principal.exibeMenu();
 	}
 }
